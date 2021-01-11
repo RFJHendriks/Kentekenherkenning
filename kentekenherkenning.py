@@ -2,7 +2,7 @@
 import pytesseract
 from pytesseract import Output
 import matplotlib.pyplot as plt
-import cv2 # this is opencv module
+import cv2  # this is opencv module
 import glob
 import os
 import imutils
@@ -190,6 +190,8 @@ for path_to_license_plate in glob.glob(path_for_license_plates, recursive = True
     path = 'F:/OpenCV/Nummerplaat/'
     imagename = license_plate + '.jpg'
     cv2.imwrite(os.path.join(path + imagename), out)
+
+    testAfbeelding = license_plate
 
     mask = np.zeros(gray.shape,np.uint8)
     new_image = cv2.drawContours(mask,[screenCnt],0,255,-1)
