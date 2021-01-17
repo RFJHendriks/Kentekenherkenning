@@ -211,7 +211,7 @@ for path_to_license_plate in glob.glob(path_for_license_plates, recursive = True
         (cnts, boundingBoxes) = zip(*sorted(zip(cnts,boundingBoxes), key=lambda b: b[1][i], reverse=reverse))
         return cnts
 
-    #gewenste breedte, hoogte voor karakters
+    #gewenste breedte, hoogte voor karakters.py
     digit_w, digit_h = 30, 60
     crop_characters = []
 
@@ -229,15 +229,15 @@ for path_to_license_plate in glob.glob(path_for_license_plates, recursive = True
         for i in range(len(crop_characters)):
             if i<=5:
                 titel = license_plate[i]
-                path = 'F:/OpenCV/Nummerplaat/Karakters/'
+                path = os.getcwd() + '/karakters/'
                 img_name = license_plate[i] + "_" + str(counter) + ".jpg"
                 testtext = path + img_name
                 cv2.imwrite(os.path.join(path + img_name), crop_characters[i])
                 counter += 1
-                text_out = pytesseract.image_to_string(crop_characters[i], config='-c tessedit_char_whitelist=ABDEFGHJKLMNOPRSTUVWXZ0123456789 --psm 11')
-                print("letter: " + titel + " voorspelling: " + text_out)
-                cv2.imshow("test", crop_characters[i])
-                cv2.waitKey(0)
+                # text_out = pytesseract.image_to_string(crop_characters[i], config='-c tessedit_char_whitelist=ABDEFGHJKLMNOPRSTUVWXZ0123456789 --psm 11')
+                # print("letter: " + titel + " voorspelling: " + text_out)
+                # cv2.imshow("test", crop_characters[i])
+                # cv2.waitKey(0)
     else:
         print(license_plate)
         counter_false += 1
@@ -303,7 +303,7 @@ for path_to_license_plate in glob.glob(path_for_license_plates, recursive = True
     #     cv2.imshow('test', testOTSU)
     #     cv2.waitKey(0)
 
-    # print('werkelijke license plate: ' + license_plate + ' gelezen kleur: ' + text + ' blurred: ' +textBlur + ' otsu: ' + textOtsu + 'karakters: ' + aantalKarakters)
+    # print('werkelijke license plate: ' + license_plate + ' gelezen kleur: ' + text + ' blurred: ' +textBlur + ' otsu: ' + textOtsu + 'karakters.py: ' + aantalKarakters)
     # cv2.imshow("blaat", CroppedBlur)
     # cv2.imshow("blaat2", edgesGray)
     # cv2.waitKey(0)

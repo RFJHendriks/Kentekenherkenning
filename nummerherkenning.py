@@ -87,7 +87,7 @@ def retrieve_info(cluster_labels, y_train):
     num = np.bincount(y_train[index==1]).argmax()
     reference_labels[i] = num
   return reference_labels
-
+print(y_train)
 reference_labels = retrieve_info(kmeans.labels_,y_train)
 print(reference_labels)
 
